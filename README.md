@@ -1,0 +1,91 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# Replication-Material: When Can We Use Two-Way Fixed-Effects (TWFE): A Comparison of TWFE and Novel Dynamic Difference-in-Differences Estimators.
+
+This repository provides all materials for replication of results in
+
+> When Can We Use Two-Way Fixed-Effects (TWFE): A Comparison of TWFE and
+> Novel Dynamic Difference-in-Differences Estimators.
+
+Date: 2026-07-15
+
+## Set up
+
+The code for replication of the results requires the following folders:
+“01_Script”, “02_Data”, “03_Output”. All R Scripts are required in
+folder “01_Script”. Simulated data are stored in “02_Data”. The results
+are exported to “03_Output”. Some of the scripts work with absolute file
+paths - please replace them in the header of the script.
+
+Note that the simulations were performed on a high performance cluster.
+The respective slurm code is available in the 01_Script folder too. The
+results were stored in 02_Data and figures are then produced locally.
+
+The following packages are necessary for reproduction of main results:
+
+``` r
+library(did)
+library(didimputation)
+library(doParallel)
+library(dplyr)
+library(etwfe)
+library(extrafont)
+library(fect)
+library(feisr)
+library(foreach)
+library(ggplot2)
+library(ggtext)
+library(grid)
+library(gridExtra)
+library(gridtext)
+library(haven)  
+library(labelled)
+library(staggered)
+library(tidyverse)
+library(viridisLite)
+```
+
+### Scripts:
+
+- *01_DiD-Smulation-Program.R*: This provides the functions for the
+  simulations.
+
+- *02_Setups.R*: This runs the simulations for different setups of data
+  (Figure 2).
+
+- *02b_Produce-Figures_Setups.R*: Produces the respective figures from
+  the simulated data (Figure 2).
+
+- *06_Run-Simulation-set_hpc_het-treat*: This runs the simulations for
+  the main results of the paper (Figures 4-8).
+
+- *06b_Produce-Figures_het-treat.R*: Produces the respective figures
+  from the simulated data (Figures 4-8).
+
+- *Remaining scripts*: These are robustness checks analog to main
+  results with different parameter settings.
+
+### Applied examples: Female earning penalty et al
+
+The folder “04_Case-Study” contains the scripts to reproduce the
+examples (motherhood earnings penalty, fatherhood earnings premium, and
+the effect of parenthood on life satisfaction). They require access to
+Understanding Society UKHLS data (UKDA-6931-stata). We used Study Number
+6931 - Understanding Society: Waves 1-13, 7th edition (November 2023).
+
+Make sure to adjust the file path at the beginning of each script.
+
+Scripts are:
+
+- *01_Long-UKHLS.do*: Compiles long-data format from UKHLS.
+
+- *02_Case_study1.R*: Analysis motherhood earnings penalty.
+
+- *03_Case_study2.R*: Analysis fatherhood earnings premium.
+
+- *04_Case_study3.R*: Analysis parental happiness.
+
+## Version information
+
+Version: R version 4.5.2
